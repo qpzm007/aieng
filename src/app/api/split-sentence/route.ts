@@ -92,10 +92,10 @@ export async function POST(req: Request) {
 
     const prompt = `
 Analyze the English sentence: "${sentence}"
-Split it into logical train blocks following the 5 Train Block order as closely as possible:
-[ core (주인공 + 동사 + 목적어/보어) ] ➡️ [ place (장소) ] ➡️ [ time (시간) ] ➡️ [ reason (이유) ] ➡️ [ complement (보충설명 - who/which/that 등 바로 앞 단어를 보충 설명하는 접착제 틀) ]
+Split it into logical train blocks.
+CRITICAL: The blocks in the 'train_blocks' array MUST be ordered in the exact sequence they appear in the original sentence, so that joining their 'text' fields sequentially reproduces the original sentence. Do NOT rearrange the blocks; keep the original sentence's word order.
 
-Rules description:
+Each block should be classified into one of the following train block types:
 - core: Basic sentence structure (Subject + Verb + Object/Complement). e.g., "Republicans started a race", "I bought a coffee".
 - place: Locations or directions (e.g. "on the November ballot", "at the park").
 - time: Time markers (e.g. "yesterday", "in the morning").
