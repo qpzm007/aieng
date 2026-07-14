@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030712;
+  --foreground: #f8fafc;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom glowing effects */
+.glow-indigo {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.4);
+}
+
+.glow-violet {
+  box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.4);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* Glassmorphism panel */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-active {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+/* Train tracks background line */
+.train-track {
+  position: relative;
+}
+
+.train-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(129, 140, 248, 0.15),
+    rgba(129, 140, 248, 0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* Animation for train engine puff */
+@keyframes puff {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-10px, -20px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-20px, -40px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.smoke-puff-1 {
+  animation: puff 2s infinite ease-out;
+}
+
+.smoke-puff-2 {
+  animation: puff 2s infinite ease-out 0.7s;
+}
+
+.smoke-puff-3 {
+  animation: puff 2s infinite ease-out 1.4s;
+}
+
+/* Glowing border animation */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    border-color: rgba(168, 85, 247, 0.8);
+  }
+}
+
+.animated-border {
+  animation: border-glow 4s infinite alternate;
+}
